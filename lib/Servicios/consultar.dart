@@ -24,8 +24,8 @@ class Voucher {
   final String nombre;
   final String moneda;
   final String moneda2;
-  final int importe;
-  final int importe_tc;
+  final double importe;
+  final double importe_tc;
   final String fecha;
   final String anio_ingreso;
   final int idPrograma;
@@ -85,8 +85,8 @@ class Voucher {
       nombre: json['nombre'] as String,
       moneda: json['moneda'] as String,
       moneda2: json['moneda2'] as String,
-      importe: json['importe'] as int,
-      importe_tc: json['importe_tc'] as int,
+      importe: json['importe'] as double,
+      importe_tc: json['importe_tc'] as double,
       fecha: json['fecha'] as String,
       anio_ingreso: json['anio_ingreso'] as String,
       idPrograma: json['idPrograma'] as int,

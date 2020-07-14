@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
             flex: 2,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(20.0),
                 child: FractionallySizedBox(
                   widthFactor: 0.7,
                   //child: Icon(Icons.account_box),
@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: SafeArea(
               child: Container(
                 padding: const EdgeInsets.symmetric(
-                    vertical: 40.0, horizontal: 16.0),
+                    vertical: 25.0, horizontal: 16.0),
                 alignment: Alignment.bottomCenter,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
