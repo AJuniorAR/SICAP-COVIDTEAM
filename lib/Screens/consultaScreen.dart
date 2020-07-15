@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:users_app/Servicios/consultar.dart';
+import 'package:sicap_covid/Screens/recibo/recibos_screen.dart';
 
 class MyConsultaScreen extends StatefulWidget {
   @override
@@ -175,7 +175,7 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new MyHomePage()));
+                        builder: (context) => new ProductsScreen()));
                 //_logueado = true;
               });
             }),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:users_app/style/estiloBtmas.dart';
-import 'package:users_app/style/estilosLetras.dart';
-import 'package:users_app/widget_routes/navigatorTab.dart';
-import 'package:users_app/clases/tipoUsuario.dart';
-import 'package:users_app/style/estilosLetras.dart';
+import 'package:sicap_covid/style/estiloBtmas.dart';
+import 'package:sicap_covid/style/estilosLetras.dart';
+import 'package:sicap_covid/widget_routes/navigatorTab.dart';
+import 'package:sicap_covid/clases/tipoUsuario.dart';
+import 'package:sicap_covid/style/estilosLetras.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:users_app/style/estiloBtmas.dart';
+import 'package:sicap_covid/style/estiloBtmas.dart';
 
 // import '../Servicios/consultar.dart';
 

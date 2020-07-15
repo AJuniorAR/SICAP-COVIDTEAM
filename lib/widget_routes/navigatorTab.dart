@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:users_app/Screens/consultaScreen.dart';
-import 'package:users_app/Screens/homeScreen.dart';
-import 'package:users_app/Screens/pagoScreen.dart';
-import 'package:users_app/Screens/reciboScreen.dart';
+import 'package:sicap_covid/Screens/consultaScreen.dart';
+import 'package:sicap_covid/Screens/homeScreen.dart';
+import 'package:sicap_covid/Screens/pagoScreen.dart';
+import 'package:sicap_covid/Screens/reciboScreen.dart';
 
 class MyNavigator extends StatefulWidget {
   @override
