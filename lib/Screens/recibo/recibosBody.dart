@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:furniture_app/components/search_box.dart';
 import 'package:sicap_covid/constants.dart';
 //import 'package:furniture_app/models/product.dart';
-import 'package:sicap_covid/screens/details/details_screen.dart';
+import 'package:sicap_covid/screens/reciboDetails/details_screen.dart';
 import 'package:sicap_covid/models/recibo.dart';
 //import 'category_list.dart';
 import 'recibo_card.dart';
