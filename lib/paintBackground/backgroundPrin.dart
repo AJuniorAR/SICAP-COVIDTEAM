@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:math' as math;
 
-import 'package:users_app/style/colorBack.dart';
+import 'package:sicap_covid/style/colorBack.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
 class ShapePainter extends CustomPainter {

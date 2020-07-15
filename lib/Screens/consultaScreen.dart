@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:users_app/Servicios/consultar.dart';
+//import 'package:users_app/Servicios/recibo.dart';
+import 'package:sicap_covid/Screens/recibo/recibos_screen.dart';
 
 class MyConsultaScreen extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class MyConsultaScreen extends StatefulWidget {
 
 class _MyConsultaScreenState extends State<MyConsultaScreen> {
   String selected = 'Nombre';
+  var _txtIdUsuario = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +132,7 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
         ],
       ),
       child: TextFormField(
+        controller: _txtIdUsuario,
         validator: (value) => value.isEmpty ? "Debe ingresar su usuario" : null,
         style: TextStyle(fontFamily: 'Open Sans'),
         decoration: _buildInputDecoration("Usuario"),
@@ -175,7 +179,8 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new MyHomePage()));
+                        builder: (context) =>
+                            new ProductsScreen(idalumno: _txtIdUsuario.text)));
                 //_logueado = true;
               });
             }),

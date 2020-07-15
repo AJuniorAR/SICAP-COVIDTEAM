@@ -4,15 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-Future<List<Voucher>> fetchVouchers(http.Client client) async {
-  final response = await client.get(
-      'https://sigapdev2-consultarecibos-back.herokuapp.com/recaudaciones/alumno/concepto/listar_cod/18207001');
-
-  // Use the compute function to run parsePhotos in a separate isolate.
-  return compute(parseVoucher, response.body);
-}
-
-class Voucher {
+class Recibo {
   final int idRec;
   final int idAlum;
   final String apeNom;
@@ -38,11 +30,11 @@ class Voucher {
   final String estado_civil;
   final bool validado;
   final String repitencia;
-  final int id_tip_grado;
+  //final int id_tip_grado;
   final int id_tipo_recaudacion;
   final String observacion;
 
-  Voucher(
+  Recibo(
       {this.idRec,
       this.idAlum,
       this.apeNom,
@@ -68,12 +60,12 @@ class Voucher {
       this.estado_civil,
       this.validado,
       this.repitencia,
-      this.id_tip_grado,
+      //this.id_tip_grado,
       this.id_tipo_recaudacion,
       this.observacion});
 
-  factory Voucher.fromJson(Map<String, dynamic> json) {
-    return Voucher(
+  factory Recibo.fromJson(Map<String, dynamic> json) {
+    return Recibo(
       idRec: json['idRec'] as int,
       idAlum: json['idAlum'] as int,
       apeNom: json['apeNom'] as String,
@@ -99,7 +91,7 @@ class Voucher {
       estado_civil: json['estado_civil'] as String,
       validado: json['validado'] as bool,
       repitencia: json['repitencia'] as String,
-      id_tip_grado: json['id_tip_grado'] as int,
+      //id_tip_grado: json['id_tip_grado'] as int,
       id_tipo_recaudacion: json['id_tipo_recaudacion'] as int,
       observacion: json['observacion'] as String,
     );
@@ -107,72 +99,16 @@ class Voucher {
 }
 
 // A function that converts a response body into a List<Voucher>.
-List<Voucher> parseVoucher(String responseBody) {
+Future<List<Recibo>> fetchVouchers(http.Client client, String idAlumno) async {
+  final response = await client.get(
+      'https://sigapdev2-consultarecibos-back.herokuapp.com/recaudaciones/alumno/concepto/listar_cod/$idAlumno');
+  // Use the compute function to run parsePhotos in a separate isolate.
+
+  return compute(parseVoucher, response.body);
+}
+
+List<Recibo> parseVoucher(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
-  return parsed.map<Voucher>((json) => Voucher.fromJson(json)).toList();
-}
-
-class MyHomePage extends StatelessWidget {
-  // final String title;
-
-  //MyHomePage({Key key, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Nombre/Codigo"),
-        backgroundColor: Colors.indigo[900],
-      ),
-      body: FutureBuilder<List<Voucher>>(
-        future: fetchVouchers(http.Client()),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-
-          return snapshot.hasData
-              ? PhotosList(photos: snapshot.data)
-              : Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-}
-
-class PhotosList extends StatelessWidget {
-  final List<Voucher> photos;
-
-  PhotosList({Key key, this.photos}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: photos == null ? 0 : photos.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Row(
-                children: <Widget>[
-                  /*CircleAvatar(
-                    radius: 40.0,
-                    //backgroundImage: NetworkImage(photos[index]['avatar']),
-                  ),*/
-                  Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        "${photos[index].idRec}  ${photos[index].descripcion_tipo} ${photos[index].fecha} S/. ${photos[index].importe}.00",
-                        style: TextStyle(
-                            fontSize: 12.0, fontWeight: FontWeight.w700),
-                      ))
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+  return parsed.map<Recibo>((json) => Recibo.fromJson(json)).toList();
 }

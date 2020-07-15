@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:users_app/paintBackground/backgroundSec.dart';
+import 'package:sicap_covid/paintBackground/backgroundSec.dart';
 
 class MyPago extends StatelessWidget {
   @override
