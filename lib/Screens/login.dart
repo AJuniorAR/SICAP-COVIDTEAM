@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:users_app/paintBackground/backgroundPrin.dart';
 import 'package:users_app/style/estiloBtmas.dart';
 import 'package:users_app/style/estilosLetras.dart';
 import 'package:users_app/widget_routes/navigatorTab.dart';
@@ -62,44 +63,57 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
   }
 
   Widget loginForm() {
-    return Container(
-      width: MediaQuery.of(context).size.width * 1,
-      height: MediaQuery.of(context).size.height * 1,
-      child: SafeArea(
-        //padding: const EdgeInsets.all(0.0),
-        child: SingleChildScrollView(
-          child: Column(
-            //mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildTipoUsuario(),
-              _buildUser(),
-              _buildPassword(),
-              _buildIngresarButton(context),
-              Container(
-                  margin: EdgeInsets.only(
-                    top: 20,
-                    bottom: 10,
-                  ),
-                  child: Text.rich(
-                    TextSpan(
-                      style: GoogleFonts.montserrat(
-                          fontSize: 12.0, color: textColor),
-                      children: [
-                        TextSpan(
-                          text: 'Olvidaste tu contraseña?',
-                        ),
-                        TextSpan(
-                          text: ' Clíck aquí',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
+    return CustomPaint(
+      painter: ShapePainter(),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 1,
+        height: MediaQuery.of(context).size.height * 1,
+        child: SafeArea(
+          //padding: const EdgeInsets.all(0.0),
+          child: SingleChildScrollView(
+            child: Column(
+              //mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.02,
+                        bottom: MediaQuery.of(context).size.height * 0.1),
+                    child: Text(
+                      'SIGAP',
+                      style: GoogleFonts.bungee(
+                          fontSize: 50.0, color: const Color(0xff26449D)),
+                      textAlign: TextAlign.left,
+                    )),
+                _buildTipoUsuario(),
+                _buildUser(),
+                _buildPassword(),
+                _buildIngresarButton(context),
+                Container(
+                    margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.15,
+                      bottom: 10,
                     ),
-                    textAlign: TextAlign.left,
-                  )),
-            ],
+                    child: Text.rich(
+                      TextSpan(
+                        style: GoogleFonts.montserrat(
+                            fontSize: 12.0, color: textColor),
+                        children: [
+                          TextSpan(
+                            text: 'Olvidaste tu contraseña?',
+                          ),
+                          TextSpan(
+                            text: ' Clíck aquí',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.left,
+                    )),
+              ],
+            ),
           ),
         ),
       ),
@@ -138,7 +152,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
 
   Widget _buildIngresarButton(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 100.0),
+      margin: const EdgeInsets.only(top: 80),
       width: MediaQuery.of(context).size.width * 0.8,
       height: MediaQuery.of(context).size.height * 0.07,
       decoration: _buildBoxDecoration(0, 15),

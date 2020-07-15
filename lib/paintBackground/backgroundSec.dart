@@ -5,10 +5,10 @@ import 'dart:math' as math;
 import 'package:users_app/style/colorBack.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
-class ShapePainter extends CustomPainter {
-  Color color1 = color_fondo;
-  Color color2 = color_circulos;
-  bool dibujar = true;
+class ShapePainter2 extends CustomPainter {
+  Color color1 = color_fondo2;
+  Color color2 = color_circulos2;
+
   @override
   void paint(Canvas canvas, Size size) {
     final height = size.height;
@@ -54,24 +54,8 @@ class ShapePainter extends CustomPainter {
     paint.color = color2;
 
     for (var item in lista) {
+      item.close();
       canvas.drawPath(item, paint);
-    }
-
-//---------------------------------------------------------------
-    Path principalBk = Path();
-    double distancia = size.height * 0.2;
-
-    principalBk.moveTo(0, 0);
-    principalBk.lineTo(size.height * 0.5, size.height * 0.5);
-    principalBk.lineTo(0, size.height);
-    principalBk.lineTo(0, size.height * 0.8);
-    principalBk.lineTo(size.height * 0.5 - distancia, size.height * 0.5);
-    principalBk.lineTo(0, size.height * 0.2);
-    paint.color = const Color(0xff1F4698);
-
-    principalBk.close();
-    if (dibujar = true) {
-      canvas.drawPath(principalBk, paint);
     }
   }
 
