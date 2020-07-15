@@ -97,7 +97,7 @@ class Recibo {
   }
 }
 
-Future<List<Recibo>> fetchVouchers(http.Client client, int idAlumno) async {
+Future<List<Recibo>> fetchVouchers(http.Client client, String idAlumno) async {
   final response = await client.get(
       'https://sigapdev2-consultarecibos-back.herokuapp.com/recaudaciones/alumno/concepto/listar_cod/$idAlumno');
   // Use the compute function to run parsePhotos in a separate isolate.

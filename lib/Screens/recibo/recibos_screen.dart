@@ -6,7 +6,9 @@ import 'recibosBody.dart';
 import 'package:sicap_covid/models/recibo.dart';
 
 class ProductsScreen extends StatelessWidget {
-  final int idalumno = 18207001;
+  final String idalumno;
+
+  const ProductsScreen({Key key, this.idalumno}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

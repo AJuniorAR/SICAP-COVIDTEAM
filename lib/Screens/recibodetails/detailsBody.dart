@@ -7,10 +7,10 @@ import 'package:sicap_covid/constants.dart';
 //import 'product_image.dart';
 import 'package:sicap_covid/models/recibo.dart';
 
-class Body extends StatelessWidget {
+class DetailsBody extends StatelessWidget {
   final Recibo recibo;
 
-  const Body({Key key, this.recibo}) : super(key: key);
+  const DetailsBody({Key key, this.recibo}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // it provide us total height and width

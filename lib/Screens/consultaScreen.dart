@@ -8,6 +8,8 @@ class MyConsultaScreen extends StatefulWidget {
 
 class _MyConsultaScreenState extends State<MyConsultaScreen> {
   String selected = 'Nombre';
+  var _txtIdUsuario = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +131,7 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
         ],
       ),
       child: TextFormField(
+        controller: _txtIdUsuario,
         validator: (value) => value.isEmpty ? "Debe ingresar su usuario" : null,
         style: TextStyle(fontFamily: 'Open Sans'),
         decoration: _buildInputDecoration("Usuario"),
@@ -175,7 +178,8 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new ProductsScreen()));
+                        builder: (context) =>
+                            new ProductsScreen(idalumno: _txtIdUsuario.text)));
                 //_logueado = true;
               });
             }),
