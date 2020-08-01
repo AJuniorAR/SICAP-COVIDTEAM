@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Text(
-            'Bienvenido',
+            'EXAMEN PARCIAL 2020-I',
             style: TextStyle(
                 fontFamily: 'Open Sans',
                 fontWeight: FontWeight.bold,

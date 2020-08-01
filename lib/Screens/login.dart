@@ -4,9 +4,6 @@ import 'package:sicap_covid/style/estiloBtmas.dart';
 import 'package:sicap_covid/style/estilosLetras.dart';
 import 'package:sicap_covid/widget_routes/navigatorTab.dart';
 import 'package:sicap_covid/clases/tipoUsuario.dart';
-import 'package:sicap_covid/style/estilosLetras.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sicap_covid/style/estiloBtmas.dart';
 
 // import '../Servicios/consultar.dart';
 
@@ -23,9 +20,9 @@ class MyLogin extends StatefulWidget {
 
 class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
   bool _logueado = false;
-  List<Tipo_User> _users = Tipo_User.getUsers();
-  List<DropdownMenuItem<Tipo_User>> _dropdownMenuItems;
-  Tipo_User _selectedUser;
+  List<tipo_user> _users = tipo_user.getUsers();
+  List<DropdownMenuItem<tipo_user>> _dropdownMenuItems;
+  tipo_user _selectedUser;
 
   void initState() {
     _dropdownMenuItems = buildDropDownMenuItem(_users);
@@ -33,9 +30,9 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     super.initState();
   }
 
-  List<DropdownMenuItem<Tipo_User>> buildDropDownMenuItem(List users) {
-    List<DropdownMenuItem<Tipo_User>> items = List();
-    for (Tipo_User tipo_user in users) {
+  List<DropdownMenuItem<tipo_user>> buildDropDownMenuItem(List users) {
+    List<DropdownMenuItem<tipo_user>> items = List();
+    for (tipo_user tipo_user in users) {
       items.add(
         DropdownMenuItem(
           value: tipo_user,
@@ -46,7 +43,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     return items;
   }
 
-  onChangeDropdownItem(Tipo_User selectedTipo) {
+  onChangeDropdownItem(tipo_user selectedTipo) {
     setState(() {
       _selectedUser = selectedTipo;
     });
@@ -90,7 +87,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
                           text: 'Olvidaste tu contraseña?',
                         ),
                         TextSpan(
-                          text: ' Clíck aquí',
+                          text: ' Click aca',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                           ),

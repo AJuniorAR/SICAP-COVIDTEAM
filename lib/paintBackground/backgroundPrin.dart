@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'dart:math' as math;
+//import 'dart:math' as math;
 //import 'package:google_fonts/google_fonts.dart';
 
 class ShapePainter extends CustomPainter {
@@ -13,24 +13,6 @@ class ShapePainter extends CustomPainter {
     mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
     paint.color = const Color(0xffF7F8FA);
     canvas.drawPath(mainBackground, paint);
-//----------------------------------------------------------------
-    /* Path flechita = Path();
-    var angle = (math.pi * 2) / sides;
-    Offset center = Offset(size.width / 2, size.height / 2);
-    Offset startPoint =
-        Offset(radius * math.cos(radians), radius * math.sin(radians));
-
-    flechita.moveTo(startPoint.dx + center.dx, startPoint.dy + center.dy);
-
-    for (int i = 1; i <= sides; i++) {
-      double x = radius * math.cos(radians + angle * i) + center.dx;
-      double y = radius * math.sin(radians + angle * i) + center.dy;
-      flechita.lineTo(x, y);
-    }
-    paint.color = Colors.white;
-    flechita.close();
-    canvas.drawPath(flechita, paint);*/
-//---------------------------------------------------------------
 
     Path circulo1 = circulo(380, 6, 61.0);
     Path circulo2 = circulo(20, 10, 99.0);

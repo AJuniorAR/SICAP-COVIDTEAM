@@ -179,7 +179,7 @@ class _MyConsultaScreenState extends State<MyConsultaScreen> {
                     context,
                     new MaterialPageRoute(
                         builder: (context) =>
-                            new ProductsScreen(idalumno: _txtIdUsuario.text)));
+                            new ReciboScreen(idalumno: _txtIdUsuario.text)));
                 //_logueado = true;
               });
             }),

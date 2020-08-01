@@ -1,11 +1,8 @@
-class Tipo_User {
+class tipo_user {
   int id;
   String tipo;
-  Tipo_User(this.id, this.tipo);
-  static List<Tipo_User> getUsers() {
-    return <Tipo_User>[
-      Tipo_User(1, 'Estudiante'),
-      Tipo_User(2, 'Administrativo')
-    ];
+  tipo_user(this.id, this.tipo);
+  static List<tipo_user> getUsers() {
+    return <tipo_user>[tipo_user(1, 'Alumno'), tipo_user(2, 'Admin')];
   }
 }
