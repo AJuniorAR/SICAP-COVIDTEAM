@@ -1,9 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sicap_covid/widget_routes/navigatorTab.dart';
 import '../Screens/login.dart';
 
 class SplashScreen extends StatefulWidget {
+  static Route<dynamic> route() {
+    return MaterialPageRoute(
+      builder: (context) => SplashScreen(),
+    );
+  }
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -29,6 +37,24 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
+  /*void navigateUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var status = prefs.getBool('isLoggedIn') ?? false;
+    print(status);
+    if (status) {
+      Navigator.pushReplacement(context, MyNavigator.route());
+    } else {
+      Navigator.pushReplacement(context, MyLogin.route());
+    }
+  }*/
+
+  @override
+  /*Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+*/
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -46,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: FractionallySizedBox(
                   widthFactor: 0.7,
                   //child: Icon(Icons.account_box),
-                  child: Image.asset('assets/white_logo.png'),
+                  //child: Image.asset('assets/white_logo.png'),
                 ),
               ),
             ),
@@ -76,4 +102,38 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
+
+/*class MainPage extends StatefulWidget {
+  static Route<dynamic> route() {
+    return MaterialPageRoute(
+      builder: (context) => MainPage(),
+    );
+  }
+
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  SharedPreferences sharedPreferences;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //  checkLoginStatus();
+  }
+
+  /* checkLoginStatus() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    if (sharedPreferences.getString("token") == null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => SplashScreen()),
+          (Route<dynamic> route) => false);
+    }
+  }*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }*/
 }

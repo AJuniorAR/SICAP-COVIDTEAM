@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sicap_covid/constants.dart';
 import 'package:sicap_covid/models/recibo.dart';
 
@@ -34,7 +35,11 @@ class DetailsScreen extends StatelessWidget {
       centerTitle: false,
       title: Text(
         'Back'.toUpperCase(),
-        style: Theme.of(context).textTheme.bodyText2,
+        //style: Theme.of(context).textTheme.bodyText2,
+        style: GoogleFonts.montserrat(
+          textStyle: Theme.of(context).textTheme.bodyText2
+        ) ,
+
       ),
       actions: <Widget>[
         IconButton(

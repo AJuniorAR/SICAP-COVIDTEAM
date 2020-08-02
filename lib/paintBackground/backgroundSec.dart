@@ -40,7 +40,7 @@ class ShapePainter2 extends CustomPainter {
     Path circulo1 = circulo(380, 6, 61.0);
     Path circulo2 = circulo(20, 10, 99.0);
     Path circulo3 = circulo(280, 170, 28.0);
-    Path circulo4 = circulo(-20, 450, 61.0);
+    Path circulo4 = circulo(-20, 600, 61.0);
     Path circulo5 = circulo(381, 520, 105.0);
     Path circulo6 = circulo(100, 701, 83.0);
     List<Path> lista = [

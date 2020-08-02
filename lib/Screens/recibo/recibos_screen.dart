@@ -13,8 +13,9 @@ class ProductsScreen extends StatelessWidget {
   const ProductsScreen({Key key, this.idalumno}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double largo = MediaQuery.of(context).size.width * 1;
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(largo),
       backgroundColor: kPrimaryColor,
       body: new CustomPaint(
         painter: ShapePainter2(),
@@ -33,18 +34,16 @@ class ProductsScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(double largo) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: false,
       title: Text(
-          'Documentos del Alumno',
-            style: GoogleFonts.montserrat(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold
-            ),
-            textAlign: TextAlign.left,
+        'Documentos del Alumno',
+        style: GoogleFonts.montserrat(
+            fontSize: largo * 0.049, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.left,
       ),
       actions: <Widget>[
         IconButton(

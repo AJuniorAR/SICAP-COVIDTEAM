@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sicap_covid/paintBackground/backgroundPrin.dart';
@@ -6,6 +9,9 @@ import 'package:sicap_covid/style/estilosLetras.dart';
 import 'package:sicap_covid/widget_routes/navigatorTab.dart';
 import 'package:sicap_covid/clases/tipoUsuario.dart';
 import 'package:sicap_covid/style/estilosLetras.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:sicap_covid/style/estiloBtmas.dart';
 
@@ -27,6 +33,8 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
   List<Tipo_User> _users = Tipo_User.getUsers();
   List<DropdownMenuItem<Tipo_User>> _dropdownMenuItems;
   Tipo_User _selectedUser;
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
 
   void initState() {
     _dropdownMenuItems = buildDropDownMenuItem(_users);
@@ -58,7 +66,12 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     return new Scaffold(
       //resizeToAvoidBottomInset: false,
       //backgroundColor: const Color(0xffF8F8F8),
-      body: _logueado ? MyNavigator() : loginForm(),
+      resizeToAvoidBottomPadding: false,
+      body: _logueado
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : loginForm(),
     );
   }
 
@@ -77,13 +90,13 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
               children: <Widget>[
                 Container(
                     margin: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.02,
-                        bottom: MediaQuery.of(context).size.height * 0.1),
+                        top: MediaQuery.of(context).size.height * 0.028,
+                        bottom: MediaQuery.of(context).size.height * 0.15),
                     child: Text(
                       'SIGAP',
                       style: GoogleFonts.bungee(
                           fontSize: 50.0, color: const Color(0xff26449D)),
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                     )),
                 _buildTipoUsuario(),
                 _buildUser(),
@@ -120,13 +133,41 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     );
   }
 
+  signIn(String email, pass) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    // Map data = {'idUsuario': email, 'apePaterno': pass};
+    var jsonResponse = null;
+    var url = Uri.encodeFull(
+        'https://sigapdev2-consultarecibos-back.herokuapp.com/usuario/alumnoprograma/buscar/$email/$pass');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      jsonResponse = json.decode(response.body);
+      if (jsonResponse != null) {
+        setState(() {
+          _logueado = false;
+        });
+        sharedPreferences.setString("token", jsonResponse['pass']);
+        debugPrint(jsonResponse['pass']);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => MyNavigator()),
+            (Route<dynamic> route) => false);
+      }
+    } else {
+      setState(() {
+        _logueado = false;
+      });
+      print(response.body);
+    }
+  }
+
   Widget _buildUser() {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: 47,
       decoration: _buildBoxDecoration(0, 15),
       child: TextFormField(
+        controller: emailController,
         validator: (value) => value.isEmpty ? "Debe ingresar su usuario" : null,
         style: GoogleFonts.montserrat(),
         decoration: _buildInputDecoration("Usuario"),
@@ -138,9 +179,10 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: 47,
       decoration: _buildBoxDecoration(0, 15),
       child: TextFormField(
+        controller: passwordController,
         obscureText: true,
         validator: (value) =>
             value.length <= 2 ? "Debe ingresar su contraseña" : null,
@@ -154,7 +196,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
     return Container(
       margin: const EdgeInsets.only(top: 80),
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: 47,
       decoration: _buildBoxDecoration(0, 15),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
@@ -172,6 +214,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
               setState(() {
                 _logueado = true;
               });
+              signIn(emailController.text, passwordController.text);
             }),
       ),
     );
@@ -182,7 +225,7 @@ class _MyLoginState extends State<MyLogin> with SingleTickerProviderStateMixin {
       padding: EdgeInsets.all(10),
       margin: const EdgeInsets.only(top: 20.0),
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: 47,
       decoration: _buildBoxDecoration(0xffFFB30F, 15),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(

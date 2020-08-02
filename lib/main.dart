@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //import 'dart:convert';
 import 'package:sicap_covid/Screens/login.dart';
 import 'package:sicap_covid/Screens/splashScreen.dart';
+import 'package:sicap_covid/widget_routes/navigatorTab.dart';
 
 void main() => runApp(MyApp());
 

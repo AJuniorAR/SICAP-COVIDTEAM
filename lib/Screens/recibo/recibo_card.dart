@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sicap_covid/models/recibo.dart';
 import '../../constants.dart';
 
@@ -95,7 +96,11 @@ class ProductCard extends StatelessWidget {
                           horizontal: kDefaultPadding),
                       child: Text(
                         product.nomPrograma,
-                        style: Theme.of(context).textTheme.button,
+                        //style: Theme.of(context).textTheme.button,
+                        style: GoogleFonts.montserrat(
+                          textStyle: Theme.of(context).textTheme.button,
+                          fontSize: 12.0
+                        ),
                       ),
                     ),
                     // it use the available space

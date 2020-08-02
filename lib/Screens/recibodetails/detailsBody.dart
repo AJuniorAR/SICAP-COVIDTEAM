@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sicap_covid/constants.dart';
 //import 'package:furniture_app/models/product.dart';
 
@@ -52,16 +53,25 @@ class DetailsBody extends StatelessWidget {
                         vertical: kDefaultPadding / 2),
                     child: Text(
                       recibo.nomPrograma,
-                      style: Theme.of(context).textTheme.headline6,
+                      style:GoogleFonts.montserrat(
+                        textStyle: Theme.of(context).textTheme.headline6,
+                      )
                     ),
                   ),
                   Text(
-                    '\$${recibo.importe}',
-                    style: TextStyle(
+                    '\S/. ${recibo.importe}',
+                    /*style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
                       color: kSecondaryColor,
-                    ),
+                    ),*/
+                    style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: kSecondaryColor,
+                      )
+                    ) ,
                   ),
 
                   Padding(
@@ -69,7 +79,11 @@ class DetailsBody extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                     child: Text(
                       recibo.descripcion_tipo,
-                      style: TextStyle(color: kTextLightColor),
+                      style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(color: kTextLightColor),
+                      )
+
+
                     ),
                   ),
                   Hero(
