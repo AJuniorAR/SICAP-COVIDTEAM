@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //import 'package:http/http.dart' as http;
 //import 'dart:async';
 //import 'dart:convert';
-import 'package:sicap_covid/Screens/login.dart';
+//import 'package:sicap_covid/Screens/login.dart';
 import 'package:sicap_covid/Screens/splashScreen.dart';
 import 'package:sicap_covid/widget_routes/navigatorTab.dart';
 
